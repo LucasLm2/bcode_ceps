@@ -1,9 +1,5 @@
 <?php
 
-use App\Models\Bairro;
-use App\Models\Estado;
-use App\Models\Municipio;
-use App\Models\Regiao;
 use App\Models\Rua;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -21,9 +17,11 @@ return new class extends Migration
             $table->unsignedTinyInteger('regiao_id');
             $table->unsignedTinyInteger('estado_id');
             $table->unsignedSmallInteger('municipio_id');
-            $table->unsignedMediumInteger('bairro_id');
+            $table->unsignedMediumInteger('bairro_id')->nullable();
             $table->foreignIdFor(Rua::class, 'rua_id')->nullable()->constrained();
-            $table->string('complemento', 75)->nullable();
+            $table->string('complemento', 100)->nullable();
+            $table->string('latitude', 20)->nullable();
+            $table->string('longitude', 20)->nullable();
             $table->timestamps();
             $table->softDeletes();
 

@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Estado;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,8 +14,9 @@ return new class extends Migration
         Schema::create('municipios', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->unsignedMediumInteger('cod_ibge')->nullable();
-            $table->string('nome', 75);
+            $table->string('nome', 100);
             $table->unsignedTinyInteger('estado_id');
+            $table->unsignedTinyInteger('ddd')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
@@ -25,6 +25,7 @@ return new class extends Migration
             // Indexs
             $table->index('cod_ibge');
             $table->index('nome');
+            $table->index('ddd');
         });
     }
 

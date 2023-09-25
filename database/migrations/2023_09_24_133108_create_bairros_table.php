@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Municipio;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bairros', function (Blueprint $table) {
             $table->mediumIncrements('id');
-            $table->string('nome', 50);
+            $table->string('nome', 80);
             $table->unsignedSmallInteger('municipio_id');
             $table->timestamps();
             $table->softDeletes();
