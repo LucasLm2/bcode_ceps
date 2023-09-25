@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Regiao;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('estados', function (Blueprint $table) {
-            $table->tinyIncrements('id');;
+            $table->tinyIncrements('id');
             $table->unsignedTinyInteger('cod_ibge')->nullable();
             $table->string('sigla', 2);
             $table->string('nome', 20);

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('regioes', function (Blueprint $table) {
-            $table->tinyIncrements('id');;
+            $table->tinyIncrements('id');
             $table->unsignedTinyInteger('cod_ibge')->nullable();
             $table->string('sigla', 2);
             $table->string('nome', 12);
