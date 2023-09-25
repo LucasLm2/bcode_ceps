@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Municipio;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class ImportMunicipiosSeed extends Seeder
 {
@@ -45,15 +44,10 @@ class ImportMunicipiosSeed extends Seeder
 
     protected function persist(): void
     {
-        DB::transaction(function(){
-           foreach ($this->municipios as $cidade) {
-               $id = $cidade['id'];
-               unset($cidade['id']);
-               Municipio::updateOrCreate(
-                   ['id' => $id],
-                   $cidade
-               );
-           }
-        });
+        Municipio::upsert(
+            $this->municipios,
+            ['id'],
+            ['nome', 'estado_id']
+        );
     }
 }
